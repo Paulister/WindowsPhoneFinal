@@ -7,9 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VentaMovil.ViewModel
+namespace VentaMovil.DataModel
 {
-    class LoginViewModel : Observable
+    public class LoginViewModel : Observable
     {
+        private SQLiteConnection db;
+
+        public ObservableCollection<Usuario> Usuarios { get; private set; }
+
+        public bool ValidaBase()
+        {
+            bool Resultado;
+            List<Usuario> usuarios = db.Table<Usuario>().ToList<Usuario>();
+            this.Usuarios.Clear();
+
+            if(usuarios == null)
+            {
+                Resultado = false;
+            }
+            else
+            {
+                Resultado = true;
+            }
+
+            return Resultado;
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using VentaMovil.Common;
+using VentaMovil.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,8 +68,13 @@ namespace VentaMovil
         /// anterior. El estado será null la primera vez que se visite una página.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            //Metodo para cargar datos o mandarlo a la burguer
+            //Metodo para cargar datos
 
+            //App.ViewModel.CargaDatos();
+
+            bool Activa;
+
+            Activa = VentaMovil.DataModel.LoginViewModel 
         }
 
         /// <summary>

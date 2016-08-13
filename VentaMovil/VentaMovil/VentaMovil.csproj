@@ -92,7 +92,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataAccess\AccesoLocal.cs" />
     <Compile Include="DataAccess\AccesoWS.cs" />
-    <Compile Include="DataModel\Usuarios.cs" />
+    <Compile Include="DataModel\Usuario.cs" />
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
