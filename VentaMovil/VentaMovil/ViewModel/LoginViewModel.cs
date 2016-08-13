@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace VentaMovil.ViewModel
 {
-    class LoginViewModel : IObservable
+    class LoginViewModel : Observable
     {
     }
 }
