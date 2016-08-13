@@ -67,6 +67,8 @@ namespace VentaMovil
         /// anterior. El estado será null la primera vez que se visite una página.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            //Metodo para cargar datos o mandarlo a la burguer
+
         }
 
         /// <summary>
