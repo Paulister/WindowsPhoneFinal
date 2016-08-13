@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation.Collections;
 
-namespace VentaMovil.Common
+namespace App5LocalDB.Common
 {
     /// <summary>
-    /// Implementación de IObservableMap que admite la reentrada, para usarla como
-    /// modelo de vista predeterminada.
+    /// Implementation of IObservableMap that supports reentrancy for use as a default view
+    /// model.
     /// </summary>
     public class ObservableDictionary : IObservableMap<string, object>
     {
