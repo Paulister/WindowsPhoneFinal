@@ -8,5 +8,11 @@ namespace VentaMovil.DataAccess
 {
     class AccesoLocal
     {
+        public Boolean verificaBaseDatos()
+        {
+            bool Resultado;
+
+            return Resultado;
+        }  
     }
 }
