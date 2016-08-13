@@ -1,10 +1,13 @@
-﻿using System;
+﻿using VentaMovil.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Graphics.Display;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -13,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// La plantilla de elemento Página en blanco está documentada en http://go.microsoft.com/fwlink/?LinkId=391641
+// La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace VentaMovil
 {
@@ -22,27 +25,87 @@ namespace VentaMovil
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private NavigationHelper navigationHelper;
+        private ObservableDictionary defaultViewModel = new ObservableDictionary();
+
         public MainPage()
         {
             this.InitializeComponent();
 
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            this.navigationHelper = new NavigationHelper(this);
+            this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
+            this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
         }
 
         /// <summary>
-        /// Se invoca cuando esta página se va a mostrar en un objeto Frame.
+        /// Obtiene el <see cref="NavigationHelper"/> asociado a esta <see cref="Page"/>.
         /// </summary>
-        /// <param name="e">Datos de evento que describen cómo se llegó a esta página.
-        /// Este parámetro se usa normalmente para configurar la página.</param>
+        public NavigationHelper NavigationHelper
+        {
+            get { return this.navigationHelper; }
+        }
+
+        /// <summary>
+        /// Obtiene el modelo de vista para esta <see cref="Page"/>.
+        /// Este puede cambiarse a un modelo de vista fuertemente tipada.
+        /// </summary>
+        public ObservableDictionary DefaultViewModel
+        {
+            get { return this.defaultViewModel; }
+        }
+
+        /// <summary>
+        /// Rellena la página con el contenido pasado durante la navegación.  Cualquier estado guardado se
+        /// proporciona también al crear de nuevo una página a partir de una sesión anterior.
+        /// </summary>
+        /// <param name="sender">
+        /// El origen del evento; suele ser <see cref="NavigationHelper"/>
+        /// </param>
+        /// <param name="e">Datos de evento que proporcionan el parámetro de navegación pasado a
+        /// <see cref="Frame.Navigate(Type, Object)"/> cuando se solicitó inicialmente esta página así como
+        /// un diccionario del estado mantenido por esta página durante una sesión
+        /// anterior. El estado será null la primera vez que se visite una página.</param>
+        private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Mantiene el estado asociado con esta página en caso de que se suspenda la aplicación o
+        /// se descarte la página de la memoria caché de navegación.  Los valores deben cumplir los requisitos
+        /// de serialización de <see cref="SuspensionManager.SessionState"/>.
+        /// </summary>
+        /// <param name="sender">El origen del evento; suele ser <see cref="NavigationHelper"/></param>
+        /// <param name="e">Datos de evento que proporcionan un diccionario vacío para rellenar con
+        /// un estado serializable.</param>
+        private void NavigationHelper_SaveState(object sender, SaveStateEventArgs e)
+        {
+        }
+
+        #region Registro de NavigationHelper
+
+        /// <summary>
+        /// Los métodos proporcionados en esta sección se usan simplemente para permitir
+        /// que NavigationHelper responda a los métodos de navegación de la página.
+        /// <para>
+        /// Debe incluirse lógica específica de página en los controladores de eventos para 
+        /// <see cref="NavigationHelper.LoadState"/>
+        /// y <see cref="NavigationHelper.SaveState"/>.
+        /// El parámetro de navegación está disponible en el método LoadState 
+        /// junto con el estado de página mantenido durante una sesión anterior.
+        /// </para>
+        /// </summary>
+        /// <param name="e">Proporciona los datos para el evento y los métodos de navegación
+        /// controladores que no pueden cancelar la solicitud de navegación.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Preparar la página que se va a mostrar aquí.
-
-            // TODO: Si la aplicación contiene varias páginas, asegúrese de
-            // controlar el botón para retroceder del hardware registrándose en el
-            // evento Windows.Phone.UI.Input.HardwareButtons.BackPressed.
-            // Si usa NavigationHelper, que se proporciona en algunas plantillas,
-            // el evento se controla automáticamente.
+            this.navigationHelper.OnNavigatedTo(e);
         }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            this.navigationHelper.OnNavigatedFrom(e);
+        }
+
+        #endregion
     }
 }
