@@ -29,7 +29,7 @@
 
         <!--TODO: Debe colocarse el contenido en la siguiente cuadrícula-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Button x:Name="Importbtn" Content="Verificar Dispositivo" HorizontalAlignment="Left" Margin="86,214,0,0" VerticalAlignment="Top" Click="button_Click"/>
+            <Button x:Name="Importbtn" Content="Verificar Dispositivo" HorizontalAlignment="Left" Margin="86,214,0,0" VerticalAlignment="Top" Click="Importbtn_Click"/>
             <TextBox x:Name="TelTxt" HorizontalAlignment="Left" Margin="10,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="342" FontSize="16" InputScope="TelephoneNumber" TextAlignment="Center"/>
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,123,0,0" TextWrapping="Wrap" Text="Introduce tu Numero Telefonico" VerticalAlignment="Top" FontSize="22" Width="341" Height="42" TextAlignment="Center"/>
         </Grid>

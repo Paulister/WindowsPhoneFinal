@@ -29,8 +29,7 @@
 
         <!--TODO: Debe colocarse el contenido en la siguiente cuadrícula-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Button x:Name="Iniciobtn" Content="Comenzar" HorizontalAlignment="Left" Margin="39,155,0,0" VerticalAlignment="Top" Height="94" Width="275" FontSize="48" Click="Iniciobtn_Click"/>
-
+            <Button x:Name="Iniciobtn" Content="Comenzar" HorizontalAlignment="Left" Margin="40,160,40,0" VerticalAlignment="Top" Height="80" Width="275" FontSize="36" Click="Iniciobtn_Click" FontWeight="Normal" />
         </Grid>
     </Grid>
 </Page>

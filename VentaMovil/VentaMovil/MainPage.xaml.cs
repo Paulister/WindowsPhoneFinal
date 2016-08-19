@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -116,12 +117,25 @@ namespace VentaMovil
 
         #endregion
 
-        private void Iniciobtn_Click(object sender, RoutedEventArgs e)
+        private async void Iniciobtn_Click(object sender, RoutedEventArgs e)
         {
             //Verificar que la Base de Datos existe si no crearla e ir a central por datos.
 
+            LoginViewModel log = new LoginViewModel();
+            bool existe = await log.ExisteDB();
+            if (!existe)
+            {
+                MessageDialog msg = new MessageDialog("Se creara Base de Datos", "Aviso");
+                await msg.ShowAsync();
+                Frame.Navigate(typeof(Import));
+                return;
+          
+            }
+            else
+            {
 
-
+                Frame.Navigate(typeof(LoginPage));
+            }
 
 
         }

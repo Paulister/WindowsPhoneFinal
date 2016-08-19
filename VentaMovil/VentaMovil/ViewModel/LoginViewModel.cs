@@ -6,31 +6,32 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
+using VentaMovil.DataAccess;
 
 namespace VentaMovil.DataModel
 {
     public class LoginViewModel : Observable
     {
-        private SQLiteConnection db;
 
-        public ObservableCollection<Usuario> Usuarios { get; private set; }
-
-        public bool ValidaBase()
+        public async Task<bool> ExisteDB()
         {
-            bool Resultado;
-            List<Usuario> usuarios = db.Table<Usuario>().ToList<Usuario>();
-            this.Usuarios.Clear();
 
-            if(usuarios == null)
+            bool dbExist = true;
+            try
             {
-                Resultado = false;
+                StorageFile sf = await ApplicationData.Current.LocalFolder.GetFileAsync("VentaMovil.db");
             }
-            else
+            catch (Exception)
             {
-                Resultado = true;
+                dbExist = false;
+                AccesoLocal AL = new AccesoLocal();
+                AL.InitDb();
             }
 
-            return Resultado;
+            return dbExist;
+        }
+
+
         }
     }
-}
