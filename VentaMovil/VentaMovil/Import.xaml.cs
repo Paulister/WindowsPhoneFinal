@@ -1,5 +1,4 @@
 ﻿using VentaMovil.Common;
-using VentaMovil.DataModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,12 +23,12 @@ namespace VentaMovil
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class Import : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public MainPage()
+        public Import()
         {
             this.InitializeComponent();
 
@@ -68,13 +67,6 @@ namespace VentaMovil
         /// anterior. El estado será null la primera vez que se visite una página.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            //Metodo para cargar datos
-
-            //App.ViewModel.CargaDatos();
-
-            //bool Activa;
-
-            //Activa = VentaMovil.DataModel.LoginViewModel;
         }
 
         /// <summary>
@@ -116,14 +108,6 @@ namespace VentaMovil
 
         #endregion
 
-        private void Iniciobtn_Click(object sender, RoutedEventArgs e)
-        {
-            //Verificar que la Base de Datos existe si no crearla e ir a central por datos.
 
-
-
-
-
-        }
     }
 }

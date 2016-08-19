@@ -12,7 +12,7 @@ namespace VentaMovil.Common
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public void NotifyPropertyChaged([CallerMemberName] string propertyName = "")
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (PropertyChanged != null)
             {

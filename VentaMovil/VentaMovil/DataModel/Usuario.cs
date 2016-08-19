@@ -19,7 +19,7 @@ namespace VentaMovil.DataModel
             set
             {
                 _IdUsuario = value;
-                NotifyPropertyChaged("IdUsuario");
+                NotifyPropertyChanged("IdUsuario");
             }
         }
 
@@ -30,7 +30,7 @@ namespace VentaMovil.DataModel
             set
             {
                 _User = value;
-                NotifyPropertyChaged("Usuario");
+                NotifyPropertyChanged("Usuario");
             }
         }
 
@@ -41,7 +41,7 @@ namespace VentaMovil.DataModel
             set
             {
                 _telefono = value;
-                NotifyPropertyChaged("Telefono");
+                NotifyPropertyChanged("Telefono");
             }
         }
 
@@ -52,7 +52,7 @@ namespace VentaMovil.DataModel
             set
             {
                 _Contraseña= value;
-                NotifyPropertyChaged("Contraseña");
+                NotifyPropertyChanged("Contraseña");
             }
         }
     }
