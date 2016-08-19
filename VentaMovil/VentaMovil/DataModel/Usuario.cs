@@ -23,14 +23,14 @@ namespace VentaMovil.DataModel
             }
         }
 
-        private string _User;
-        public string User
+        private string _Nombre;
+        public string Nombre
         {
-            get { return _User; }
+            get { return _Nombre; }
             set
             {
-                _User = value;
-                NotifyPropertyChanged("Usuario");
+                _Nombre = value;
+                NotifyPropertyChanged("Nombre");
             }
         }
 
@@ -45,14 +45,14 @@ namespace VentaMovil.DataModel
             }
         }
 
-        private string _Contraseña;
-        public string Contraseña
+        private string _Contrasenia;
+        public string Contrasenia
         {
-            get { return _Contraseña; }
+            get { return _Contrasenia; }
             set
             {
-                _Contraseña= value;
-                NotifyPropertyChanged("Contraseña");
+                _Contrasenia= value;
+                NotifyPropertyChanged("Contrasenia");
             }
         }
     }

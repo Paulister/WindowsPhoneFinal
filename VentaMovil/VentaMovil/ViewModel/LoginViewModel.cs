@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using VentaMovil.DataAccess;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace VentaMovil.DataModel
 {
@@ -24,6 +26,7 @@ namespace VentaMovil.DataModel
             }
             catch (Exception)
             {
+                //Si no existe se crea la Base
                 dbExist = false;
                 AccesoLocal AL = new AccesoLocal();
                 AL.InitDb();
@@ -33,5 +36,17 @@ namespace VentaMovil.DataModel
         }
 
 
+        public async Task<Usuario> GetUsuarioByTel(string NumTelefono)
+        {
+            HttpClient client = new HttpClient();
+            Uri dataUri = new Uri("http://localhost:50305/WSVentasRuta.svc/GetUsuarioByTel/" + NumTelefono);
+            string jsonText = await client.GetStringAsync(dataUri);
+            Usuario Usu = JsonConvert.DeserializeObject<Usuario>(jsonText);
+            return Usu;
         }
+
+
+
+
+    }
     }

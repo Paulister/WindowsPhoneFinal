@@ -125,15 +125,10 @@ namespace VentaMovil
             bool existe = await log.ExisteDB();
             if (!existe)
             {
-                MessageDialog msg = new MessageDialog("Se creara Base de Datos", "Aviso");
-                await msg.ShowAsync();
                 Frame.Navigate(typeof(Import));
-                return;
-          
             }
             else
             {
-
                 Frame.Navigate(typeof(LoginPage));
             }
 

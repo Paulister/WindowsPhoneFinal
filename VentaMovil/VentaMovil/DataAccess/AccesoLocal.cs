@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using VentaMovil.DataModel;
 using SQLite;
 using Windows.Storage;
+using System.IO;
+using VentaMovil.Common;
 
 namespace VentaMovil.DataAccess
 {
     class AccesoLocal
     {
         private String DB_NAME = "VentaMovil.db";
+
 
         public SQLiteAsyncConnection Conn { get; set; }
 
@@ -50,7 +53,13 @@ namespace VentaMovil.DataAccess
 
         private async Task CreateDatabaseAsync()
         {
+            //Crea Tabla Usuario
          await Conn.CreateTableAsync<Usuario>();
+            //Crea Tabla Cliente
+            await Conn.CreateTableAsync<Cliente>();
+
         }
+       
+
     }
 }
