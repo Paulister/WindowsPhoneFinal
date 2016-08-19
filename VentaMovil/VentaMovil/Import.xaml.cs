@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.Popups;
+using VentaMovil.DataModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -110,8 +112,23 @@ namespace VentaMovil
 
         #endregion
 
-        private void Importbtn_Click(object sender, RoutedEventArgs e)
+        private async void Importbtn_Click(object sender, RoutedEventArgs e)
         {
+            if (TelTxt.Text.Length != 10)
+            {
+                MessageDialog msg = new MessageDialog("Faltan Digitos", "Error");
+                await msg.ShowAsync();
+                return;
+            }
+            else
+            {
+                LoginViewModel model = new LoginViewModel();
+                Usuario usu = await model.GetUsuarioByTel(TelTxt.Text);
+                model.InsertaUsuarioBDLocal(usu);
+                Frame.Navigate(typeof(LoginPage));
+            }
+
+
 
         }
     }

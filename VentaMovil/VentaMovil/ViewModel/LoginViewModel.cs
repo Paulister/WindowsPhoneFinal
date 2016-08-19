@@ -15,7 +15,7 @@ namespace VentaMovil.DataModel
 {
     public class LoginViewModel : Observable
     {
-
+        AccesoLocal AL = new AccesoLocal();
         public async Task<bool> ExisteDB()
         {
 
@@ -28,7 +28,6 @@ namespace VentaMovil.DataModel
             {
                 //Si no existe se crea la Base
                 dbExist = false;
-                AccesoLocal AL = new AccesoLocal();
                 AL.InitDb();
             }
 
@@ -45,7 +44,25 @@ namespace VentaMovil.DataModel
             return Usu;
         }
 
+        public void InsertaUsuarioBDLocal(Usuario us)
+        {
+            
+            AL.AddUsuario(us);
+        }
+        public bool CheckUS ()
+        {
 
+        
+            bool existe = AL.ExisteUs();
+            return existe;
+
+        }
+
+        public bool InicioSesion(Usuario us)
+        {
+            bool ok = AL.Login(us);
+            return ok;
+        }
 
 
     }

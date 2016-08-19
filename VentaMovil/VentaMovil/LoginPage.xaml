@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" FontSize="24">
 
     <Grid x:Name="LayoutRoot">
 
@@ -18,18 +18,32 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="49*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="106*"/>
         </Grid.RowDefinitions>
 
         <!-- Panel de título -->
-        <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock Text="MY APPLICATION" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="page title" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+        <StackPanel Grid.Row="0" Margin="19,0,0,0.167">
+            <TextBlock Text="Venta Movil" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+            <TextBlock Text="Inicio Sesion" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Debe colocarse el contenido en la siguiente cuadrícula-->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.833,19,0" Grid.RowSpan="3">
+            <Button x:Name="logbtn" Content="Iniciar Sesion" HorizontalAlignment="Left" Margin="66,305,0,0" VerticalAlignment="Top" Width="232" Click="logbtn_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF66ED12" Offset="0"/>
+                        <GradientStop Color="#FFF1EB1F" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="Usuario:" VerticalAlignment="Top" FontSize="24"/>
+            <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="10,199,0,0" TextWrapping="Wrap" Text="Contraseña" VerticalAlignment="Top" FontSize="24"/>
 
         </Grid>
+        <TextBox x:Name="Usuariotxt" HorizontalAlignment="Left" Margin="19,45.5,0,0" Grid.Row="2" TextWrapping="Wrap"  VerticalAlignment="Top" Width="362" Height="39"/>
+        <TextBox x:Name="Contraseniatxt" HorizontalAlignment="Left" Margin="19,141.5,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Height="39"/>
     </Grid>
 </Page>

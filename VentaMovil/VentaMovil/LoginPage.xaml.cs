@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VentaMovil.DataModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -107,5 +108,18 @@ namespace VentaMovil
         }
 
         #endregion
+
+        private void logbtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoginViewModel log = new LoginViewModel();
+            Usuario Us = new Usuario();
+
+            Us.Nombre = Usuariotxt.Text;
+            Us.Contrasenia = Contraseniatxt.Text;
+            if (!log.InicioSesion(Us))
+            {
+                Frame.Navigate(typeof(Menu));
+            }
+        }
     }
 }

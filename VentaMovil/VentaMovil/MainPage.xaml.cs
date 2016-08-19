@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
+using VentaMovil.DataAccess;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -122,17 +123,30 @@ namespace VentaMovil
             //Verificar que la Base de Datos existe si no crearla e ir a central por datos.
 
             LoginViewModel log = new LoginViewModel();
-            bool existe = await log.ExisteDB();
-            if (!existe)
+            bool existedb = await log.ExisteDB();
+            if (existedb==true)
             {
-                Frame.Navigate(typeof(Import));
+
+                bool existeus = log.CheckUS();
+                if (existeus==true)
+                {
+                    Frame.Navigate(typeof(LoginPage));
+                }
+                else
+                {
+                    Frame.Navigate(typeof(Import));
+                }
+               
             }
-            else
-            {
-                Frame.Navigate(typeof(LoginPage));
-            }
+       
 
 
+        }
+
+        private void delbtn_Click(object sender, RoutedEventArgs e)
+        {
+            AccesoLocal AL = new AccesoLocal();
+            AL.BorrarUsuarios();
         }
     }
 }
