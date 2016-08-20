@@ -191,6 +191,13 @@ namespace VentaMovil.DataAccess
             }
         }
 
+        public List<Producto> ListaProductos()
+        {
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            List<Producto> productos = db.Table<Producto>().ToList<Producto>();
+            return productos;
+        }
+
 
     }
 }

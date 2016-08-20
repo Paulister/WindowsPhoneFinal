@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VentaMovil.ViewModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -23,18 +24,31 @@ namespace VentaMovil
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Menu : Page
+    public sealed partial class Productos : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public Menu()
+        private static ProductosViewModel _viewModel = null;
+        public static ProductosViewModel ViewModel
+        {
+            get
+            {
+                if (_viewModel == null)
+                {
+                    _viewModel = new ProductosViewModel();
+                }
+                return _viewModel;
+            }
+        }
+        public Productos()
         {
             this.InitializeComponent();
 
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.DataContext = ViewModel;
         }
 
         /// <summary>
@@ -107,25 +121,5 @@ namespace VentaMovil
         }
 
         #endregion
-
-        private void Ventasbtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Clientesbtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Clientes));
-        }
-
-        private void Productosbtn_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Productos));
-        }
-
-        private void Sincronizarbtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

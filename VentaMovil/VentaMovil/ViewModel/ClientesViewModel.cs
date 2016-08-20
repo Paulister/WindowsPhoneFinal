@@ -16,24 +16,13 @@ namespace VentaMovil.ViewModel
         public ObservableCollection<Cliente> Clientes { get; private set; }
         public ClientesViewModel()
         {
-
             this.Clientes = new ObservableCollection<Cliente>();
             List<Cliente> cliente = AL.ListaClientes();
-
             this.Clientes.Clear();
-
             foreach (Cliente c in cliente)
             {
                 this.Clientes.Add(c);
             }
-
         }
-        public void CargaDatos()
-        {
-
-            
-        }
-
-
     }
 }
