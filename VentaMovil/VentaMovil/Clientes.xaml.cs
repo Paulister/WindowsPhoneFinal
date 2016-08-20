@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using VentaMovil.ViewModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -28,6 +29,22 @@ namespace VentaMovil
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
+        
+     
+        private static ClientesViewModel _viewModel = null;
+        public static ClientesViewModel ViewModel
+        {
+            get
+            {
+                if (_viewModel == null)
+                {
+                    _viewModel = new ClientesViewModel();
+                }
+                return _viewModel;
+            }
+        }
+
+
         public Clientes()
         {
             this.InitializeComponent();
@@ -35,6 +52,7 @@ namespace VentaMovil
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
+            this.DataContext = ViewModel;
         }
 
         /// <summary>
@@ -67,6 +85,10 @@ namespace VentaMovil
         /// anterior. El estado será null la primera vez que se visite una página.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+
+        
+
+
         }
 
         /// <summary>

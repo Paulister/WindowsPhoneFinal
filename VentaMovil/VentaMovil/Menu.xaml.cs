@@ -115,7 +115,7 @@ namespace VentaMovil
 
         private void Clientesbtn_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(Clientes));
         }
 
         private void Productosbtn_Click(object sender, RoutedEventArgs e)

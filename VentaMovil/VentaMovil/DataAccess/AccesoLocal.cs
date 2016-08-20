@@ -164,6 +164,15 @@ namespace VentaMovil.DataAccess
             }
         }
 
+        public List<Cliente> ListaClientes ()
+        {
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            List<Cliente> clientes = db.Table<Cliente>().ToList<Cliente>();
+            return clientes;
+        }
+
+        //PRODUCTOS
+
         public void InsertarProductosBDLocal(List<Producto> Pro)
         {
 
