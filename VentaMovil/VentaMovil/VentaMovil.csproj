@@ -96,6 +96,7 @@
     <Compile Include="DataAccess\AccesoLocal.cs" />
     <Compile Include="DataAccess\AccesoWS.cs" />
     <Compile Include="DataModel\Cliente.cs" />
+    <Compile Include="DataModel\Producto.cs" />
     <Compile Include="DataModel\Usuario.cs" />
     <Compile Include="Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
@@ -112,6 +113,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLite.cs" />
     <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="ViewModel\ClientesViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

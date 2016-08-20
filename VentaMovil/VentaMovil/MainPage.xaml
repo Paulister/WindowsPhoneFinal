@@ -30,7 +30,7 @@
         <!--TODO: Debe colocarse el contenido en la siguiente cuadrícula-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
             <Button x:Name="Iniciobtn" Content="Comenzar" HorizontalAlignment="Left" Margin="40,160,40,0" VerticalAlignment="Top" Height="80" Width="275" FontSize="36" Click="Iniciobtn_Click" FontWeight="Normal" />
-            <Button x:Name="delbtn" Content="BorrarTablaUsuario" HorizontalAlignment="Left" Margin="92,351,0,0" VerticalAlignment="Top" Click="delbtn_Click"/>
+            <Button x:Name="delbtn" Content="BorrarDB" HorizontalAlignment="Left" Margin="129,443,0,0" VerticalAlignment="Top" Click="delbtn_Click"/>
         </Grid>
     </Grid>
 </Page>

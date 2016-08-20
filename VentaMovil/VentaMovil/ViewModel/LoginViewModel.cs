@@ -35,14 +35,7 @@ namespace VentaMovil.DataModel
         }
 
         //Importar Usuario a BD Local verificando si existe usuario 
-        public async Task<Usuario> GetUsuarioByTel(string NumTelefono)
-        {
-            HttpClient client = new HttpClient();
-            Uri dataUri = new Uri("http://localhost:50305/WSVentasRuta.svc/GetUsuarioByTel/" + NumTelefono);
-            string jsonText = await client.GetStringAsync(dataUri);
-            Usuario Usu = JsonConvert.DeserializeObject<Usuario>(jsonText);
-            return Usu;
-        }
+
 
         public void InsertaUsuarioBDLocal(Usuario us)
         { 
@@ -61,19 +54,20 @@ namespace VentaMovil.DataModel
         }
 
         //Importar Clientes a BD Local
-        public async Task<List<Cliente>> GetClientesById(string IdUsuario)
-        {
-            HttpClient client = new HttpClient();
-            Uri dataUri = new Uri("http://localhost:50305/WSVentasRuta.svc/GetClientesById/" + IdUsuario);
-            string jsonText = await client.GetStringAsync(dataUri);
-            List<Cliente> Clientes = JsonConvert.DeserializeObject<List<Cliente>>(jsonText);
-            return Clientes;
-        }
+
 
         public void InsertaClientesBDLocal(List<Cliente> Cli)
         {
             AL.InsertarClientesBDLocal(Cli);
         }
 
+        //Importar Productos a BD Local
+        public void InsertaProductosBDLocal(List<Producto> Pro)
+        {
+            AL.InsertarProductosBDLocal(Pro);
+        }
+
+
+
     }
-    }
+}

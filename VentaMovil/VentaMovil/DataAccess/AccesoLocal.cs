@@ -130,6 +130,8 @@ namespace VentaMovil.DataAccess
                 dbConn.CreateTable<Usuario>();
                 dbConn.DropTable<Cliente>();
                 dbConn.CreateTable<Cliente>();
+                dbConn.DropTable<Producto>();
+                dbConn.CreateTable<Producto>();
             }
         }
 
@@ -163,6 +165,28 @@ namespace VentaMovil.DataAccess
 
             }
        
+
+        }
+
+        public void InsertarProductosBDLocal(List<Producto> Pro)
+        {
+
+            //Insert en la base de Datos
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            foreach (Producto pro in Pro)
+            {
+                Producto nuevo = new Producto
+                {
+                    IdProducto = pro.IdProducto,
+                    Nombre = pro.Nombre,
+                    Precio = pro.Precio,
+                    Inventario = pro.Inventario
+
+                };
+                db.Insert(nuevo);
+
+            }
+
 
         }
 

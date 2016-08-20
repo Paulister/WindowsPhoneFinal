@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Popups;
 using VentaMovil.DataModel;
+using VentaMovil.DataAccess;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -116,17 +117,20 @@ namespace VentaMovil
         {
             if (TelTxt.Text.Length != 10)
             {
-                MessageDialog msg = new MessageDialog("Faltan Digitos", "Error");
+                MessageDialog msg = new MessageDialog("Faltan Digitos");
                 await msg.ShowAsync();
                 return;
             }
             else
             {
-                LoginViewModel model = new LoginViewModel();
-                Usuario usu = await model.GetUsuarioByTel(TelTxt.Text);
-                List<Cliente> clis = await model.GetClientesById(usu.IdUsuario.ToString());
-                model.InsertaUsuarioBDLocal(usu);
-                model.InsertaClientesBDLocal(clis);
+                AccesoWS AWS = new AccesoWS();
+                LoginViewModel LVM =new LoginViewModel();
+                Usuario usu = await AWS.GetUsuarioByTel(TelTxt.Text);
+                List<Cliente> clis = await AWS.GetClientesById(usu.IdUsuario.ToString());
+                List<Producto> pros = await AWS.GetProductosById(usu.IdUsuario.ToString());
+                LVM.InsertaUsuarioBDLocal(usu);
+                LVM.InsertaClientesBDLocal(clis);
+                LVM.InsertaProductosBDLocal(pros);
                 Frame.Navigate(typeof(LoginPage));
             }
 

@@ -115,7 +115,7 @@ namespace VentaMovil
             Usuario Us = new Usuario();
 
             Us.Nombre = Usuariotxt.Text;
-            Us.Contrasenia = Contraseniatxt.Text;
+            Us.Contrasenia = Contraseniatxt.Password;
             if (!log.InicioSesion(Us))
             {
                 Frame.Navigate(typeof(Menu));
