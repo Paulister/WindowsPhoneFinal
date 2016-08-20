@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="VentaMovil.Menu"
+    x:Class="VentaMovil.Clientes"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VentaMovil"
@@ -24,17 +24,12 @@
         <!-- Panel de título -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock Text="Venta Movil" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
-            <TextBlock Text="Menu" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock Text="Clientes" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <!--TODO: Debe colocarse el contenido en la siguiente cuadrícula-->
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
 
         </Grid>
-        <Button x:Name="Ventasbtn" Content="Ventas" HorizontalAlignment="Left" Margin="26,54.833,0,0" Grid.Row="1" VerticalAlignment="Top" Width="347" Height="93" Click="Ventasbtn_Click"/>
-        <Button x:Name="Clientesbtn" Content="Clientes" HorizontalAlignment="Left" Margin="26,171.833,0,0" Grid.Row="1" VerticalAlignment="Top" Width="347" Height="94" Click="Clientesbtn_Click"/>
-        <Button x:Name="Productosbtn" Content="Productos" HorizontalAlignment="Left" Margin="26,280.833,0,0" Grid.Row="1" VerticalAlignment="Top" Width="347" Height="94" Click="Productosbtn_Click"/>
-        <Button x:Name="Sincronizarbtn" Content="Sincronizar" HorizontalAlignment="Left" Margin="26,394.833,0,0" Grid.Row="1" VerticalAlignment="Top" Width="347" Height="94" Click="Sincronizarbtn_Click"/>
-
     </Grid>
 </Page>

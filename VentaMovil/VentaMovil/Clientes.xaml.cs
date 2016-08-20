@@ -15,8 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Windows.UI.Popups;
-using VentaMovil.DataModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,12 +23,12 @@ namespace VentaMovil
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class Import : Page
+    public sealed partial class Clientes : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public Import()
+        public Clientes()
         {
             this.InitializeComponent();
 
@@ -108,30 +106,6 @@ namespace VentaMovil
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
-
-
         #endregion
-
-        private async void Importbtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (TelTxt.Text.Length != 10)
-            {
-                MessageDialog msg = new MessageDialog("Faltan Digitos", "Error");
-                await msg.ShowAsync();
-                return;
-            }
-            else
-            {
-                LoginViewModel model = new LoginViewModel();
-                Usuario usu = await model.GetUsuarioByTel(TelTxt.Text);
-                List<Cliente> clis = await model.GetClientesById(usu.IdUsuario.ToString());
-                model.InsertaUsuarioBDLocal(usu);
-                model.InsertaClientesBDLocal(clis);
-                Frame.Navigate(typeof(LoginPage));
-            }
-
-
-
-        }
     }
 }

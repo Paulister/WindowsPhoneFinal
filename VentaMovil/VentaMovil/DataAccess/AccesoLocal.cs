@@ -16,6 +16,7 @@ namespace VentaMovil.DataAccess
         private String DB_NAME = "VentaMovil.db";
         string connstring = Path.Combine(ApplicationData.Current.LocalFolder.Path, "VentaMovil.db");
 
+
         public SQLiteAsyncConnection Conn { get; set; }
 
         public AccesoLocal()
@@ -57,11 +58,11 @@ namespace VentaMovil.DataAccess
 
          await Conn.CreateTableAsync<Usuario>();
             //Crea Tabla Cliente
-            //await Conn.CreateTableAsync<Cliente>();
+         await Conn.CreateTableAsync<Cliente>();
 
         }
 
-
+        //USUARIO
         public void AddUsuario(Usuario Usuar)
         {
 
@@ -69,8 +70,6 @@ namespace VentaMovil.DataAccess
          SQLiteConnection db = new SQLiteConnection(connstring, true);
          //DeleteUsuario(Usuar);
          db.Insert(Usuar);
-
-
         }
 
  
@@ -123,13 +122,48 @@ namespace VentaMovil.DataAccess
             }
         }
 
-        public void BorrarUsuarios()
+        public void BorrarTablas()
         {
             using (var dbConn = new SQLiteConnection(connstring))
             {
                 dbConn.DropTable<Usuario>();
                 dbConn.CreateTable<Usuario>();
+                dbConn.DropTable<Cliente>();
+                dbConn.CreateTable<Cliente>();
             }
+        }
+
+        //CLIENTES
+
+
+        public void AddCliente(Cliente Cli)
+        {
+
+            //Insert en la base de Datos
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            db.Insert(Cli);
+
+        }
+
+        public void InsertarClientesBDLocal(List<Cliente> Cli)
+        {
+
+            //Insert en la base de Datos
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            foreach (Cliente cli in Cli)
+            {
+                Cliente nuevo = new Cliente
+                {
+                    IdCliente = cli.IdCliente,
+                    NombreCompleto = cli.NombreCompleto,
+                    RFC = cli.RFC
+                    
+                };
+                db.Insert(nuevo);
+
+            }
+       
+
         }
 
 

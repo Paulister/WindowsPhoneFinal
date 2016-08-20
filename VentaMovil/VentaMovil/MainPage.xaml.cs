@@ -146,7 +146,7 @@ namespace VentaMovil
         private void delbtn_Click(object sender, RoutedEventArgs e)
         {
             AccesoLocal AL = new AccesoLocal();
-            AL.BorrarUsuarios();
+            AL.BorrarTablas();
         }
     }
 }

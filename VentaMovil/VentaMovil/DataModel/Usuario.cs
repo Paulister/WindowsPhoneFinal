@@ -12,7 +12,7 @@ namespace VentaMovil.DataModel
     public class Usuario : Observable
     {
         private int _IdUsuario;
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         public int IdUsuario
         {
             get { return _IdUsuario; }

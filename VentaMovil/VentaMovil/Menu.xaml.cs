@@ -107,5 +107,25 @@ namespace VentaMovil
         }
 
         #endregion
+
+        private void Ventasbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clientesbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Productosbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Sincronizarbtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
