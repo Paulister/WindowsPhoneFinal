@@ -24,5 +24,24 @@ namespace VentaMovil.ViewModel
                 this.Clientes.Add(c);
             }
         }
+        public void EditarCliente(Cliente Cli)
+        {
+            var cliente = (from c in Clientes
+                           where c.IdCliente == Cli.IdCliente
+                           select c).SingleOrDefault();
+            if ( cliente != null)
+            {
+                cliente.NombreCompleto = Cli.NombreCompleto;
+                cliente.RFC = Cli.RFC;
+
+                AL.EditCliente(cliente);
+
+            }
+        }
+
+        public void AgregarCliente(Cliente Cli)
+        {
+                AL.AddCliente(Cli);  
+        }
     }
 }

@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using VentaMovil.DataModel;
-using Windows.UI.Popups;
+using VentaMovil.ViewModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,12 +25,13 @@ namespace VentaMovil
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class EditCliente : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private Cliente cli;
 
-        public LoginPage()
+        public EditCliente()
         {
             this.InitializeComponent();
 
@@ -69,6 +70,8 @@ namespace VentaMovil
         /// anterior. El estado será null la primera vez que se visite una página.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
+            cli = (Cliente)e.NavigationParameter;
+            DataContext = cli;
         }
 
         /// <summary>
@@ -108,25 +111,24 @@ namespace VentaMovil
             this.navigationHelper.OnNavigatedFrom(e);
         }
 
+
         #endregion
 
-        private async void logbtn_Click(object sender, RoutedEventArgs e)
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginViewModel log = new LoginViewModel();
-            Usuario Us = new Usuario();
+            Cliente Cli2 = new Cliente();
+            ClientesViewModel CVM = new ClientesViewModel();
+            Cli2.IdCliente = cli.IdCliente;
+            Cli2.NombreCompleto = Nombretxt.Text;
+            Cli2.RFC = RFCtxt.Text;
+            CVM.EditarCliente(Cli2);
 
-            Us.Nombre = Usuariotxt.Text;
-            Us.Contrasenia = Contraseniatxt.Password;
-            if (!log.InicioSesion(Us))
-            {
-                Frame.Navigate(typeof(Menu));
-            }
-            else
-            {
-                MessageDialog msg = new MessageDialog("Usuario o Contraseña Incorrectos");
-                await msg.ShowAsync();
-                return;
-            }
+
+        }
+
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Clientes));
         }
     }
 }

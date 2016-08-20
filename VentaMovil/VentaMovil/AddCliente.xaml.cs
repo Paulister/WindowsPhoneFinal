@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using VentaMovil.DataModel;
-using Windows.UI.Popups;
+using VentaMovil.ViewModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -25,12 +25,12 @@ namespace VentaMovil
     /// <summary>
     /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
     /// </summary>
-    public sealed partial class LoginPage : Page
+    public sealed partial class AddCliente : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public LoginPage()
+        public AddCliente()
         {
             this.InitializeComponent();
 
@@ -110,23 +110,19 @@ namespace VentaMovil
 
         #endregion
 
-        private async void logbtn_Click(object sender, RoutedEventArgs e)
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginViewModel log = new LoginViewModel();
-            Usuario Us = new Usuario();
+            Cliente Cli2 = new Cliente();
+            ClientesViewModel CVM = new ClientesViewModel();
+            Cli2.IdCliente = 11;
+            Cli2.NombreCompleto = Nombretxt.Text;
+            Cli2.RFC = RFCtxt.Text;
+            CVM.AgregarCliente(Cli2);
+        }
 
-            Us.Nombre = Usuariotxt.Text;
-            Us.Contrasenia = Contraseniatxt.Password;
-            if (!log.InicioSesion(Us))
-            {
-                Frame.Navigate(typeof(Menu));
-            }
-            else
-            {
-                MessageDialog msg = new MessageDialog("Usuario o Contraseña Incorrectos");
-                await msg.ShowAsync();
-                return;
-            }
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Clientes));
         }
     }
 }

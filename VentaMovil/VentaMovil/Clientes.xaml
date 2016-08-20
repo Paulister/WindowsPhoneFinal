@@ -9,7 +9,15 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <DataTemplate x:Key="ClienteItemTemplate">
-            <Grid Margin=" 0,0,0,10">
+            
+            <Grid Margin=" 0,0,0,10" Holding="Grid_Holding">
+                <FlyoutBase.AttachedFlyout>
+                    <MenuFlyout>
+                        <MenuFlyoutItem x:Name="EditButton"
+                            Text="Editar"
+                            Click="EditButton_Click"/>
+                    </MenuFlyout>
+                </FlyoutBase.AttachedFlyout>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
 
@@ -22,7 +30,13 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <MenuFlyout x:Key="FlyoutBase1"/>
     </Page.Resources>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Add" Label="Agregar" Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
     <Grid x:Name="LayoutRoot">
 

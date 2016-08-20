@@ -171,6 +171,15 @@ namespace VentaMovil.DataAccess
             return clientes;
         }
 
+
+        public void EditCliente(Cliente Cli)
+        {
+
+            SQLiteConnection db = new SQLiteConnection(connstring, true);
+            db.Update(Cli);
+
+        }
+
         //PRODUCTOS
 
         public void InsertarProductosBDLocal(List<Producto> Pro)

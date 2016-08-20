@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using VentaMovil.ViewModel;
+using Windows.UI.Popups;
+using VentaMovil.DataModel;
 
 // La plantilla de elemento Página básica está documentada en http://go.microsoft.com/fwlink/?LinkID=390556
 
@@ -129,5 +131,25 @@ namespace VentaMovil
         }
 
         #endregion
+
+        private void Grid_Holding(object sender, HoldingRoutedEventArgs e)
+        {
+            FrameworkElement senderElement = sender as FrameworkElement;
+            // If you need the clicked element:
+            // Item whichOne = senderElement.DataContext as Item;
+            FlyoutBase flyoutBase = FlyoutBase.GetAttachedFlyout(senderElement);
+            flyoutBase.ShowAt(senderElement);
+        }
+
+        private  void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            Cliente cli = LVClientes.SelectedItem as Cliente;
+            Frame.Navigate(typeof(EditCliente), cli);  
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddCliente));
+        }
     }
 }
