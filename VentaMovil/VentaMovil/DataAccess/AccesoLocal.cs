@@ -159,13 +159,9 @@ namespace VentaMovil.DataAccess
                     IdCliente = cli.IdCliente,
                     NombreCompleto = cli.NombreCompleto,
                     RFC = cli.RFC
-                    
                 };
                 db.Insert(nuevo);
-
             }
-       
-
         }
 
         public void InsertarProductosBDLocal(List<Producto> Pro)
@@ -181,13 +177,9 @@ namespace VentaMovil.DataAccess
                     Nombre = pro.Nombre,
                     Precio = pro.Precio,
                     Inventario = pro.Inventario
-
                 };
                 db.Insert(nuevo);
-
             }
-
-
         }
 
 

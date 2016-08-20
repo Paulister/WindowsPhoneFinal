@@ -96,8 +96,10 @@
     <Compile Include="DataAccess\AccesoLocal.cs" />
     <Compile Include="DataAccess\AccesoWS.cs" />
     <Compile Include="DataModel\Cliente.cs" />
+    <Compile Include="DataModel\DetalleVenta.cs" />
     <Compile Include="DataModel\Producto.cs" />
     <Compile Include="DataModel\Usuario.cs" />
+    <Compile Include="DataModel\Venta.cs" />
     <Compile Include="Import.xaml.cs">
       <DependentUpon>Import.xaml</DependentUpon>
     </Compile>
